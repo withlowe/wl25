@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1 {
+    @apply text-2xl font-medium mb-8;
+  }
+
+  h2 {
+    @apply text-xl font-medium mb-4 mt-8;
+  }
+
+  p {
+    @apply mb-6 leading-relaxed;
+  }
+
+  a {
+    @apply text-foreground hover:text-muted-foreground transition-colors;
+  }
+
+  /* Remove underlines from navigation links */
+  nav a {
+    @apply no-underline font-mono;
+  }
+
+  img {
+    @apply my-8 rounded-sm;
+  }
+}
+
+/* Add styles for the post list */
+.post-list {
+  @apply w-full;
+}
+
+.year-heading {
+  @apply text-sm text-muted-foreground py-2 w-16 pr-4 md:w-24 md:pr-8 shrink-0 font-mono;
+}
+
+.post-row {
+  @apply flex flex-wrap md:flex-nowrap items-center py-2 border-t border-border hover:bg-secondary/50 transition-colors;
+}
+
+.post-title {
+  @apply flex-grow text-foreground no-underline min-w-0 truncate;
+}
+
+.post-date {
+  @apply text-sm text-muted-foreground w-16 text-right shrink-0 mt-2 md:mt-0 ml-auto md:ml-0 font-mono;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 640px) {
+  .post-row {
+    @apply flex-col items-start py-3;
+  }
+
+  .year-heading {
+    @apply mb-2;
+  }
+
+  .post-title {
+    @apply w-full pl-0 mt-0 mb-1;
+  }
+
+  .post-date {
+    @apply pl-0 text-left w-full;
+  }
+}
+
+/* Ensure the prose content has proper styling */
+.prose {
+  @apply max-w-none;
+}
+
+.prose p {
+  @apply mb-6;
+}
+
+.prose img {
+  @apply my-8;
+}
+
+/* Dark mode adjustments for images */
+.dark .prose img {
+  @apply opacity-90;
+}
+
+/* Back link styling */
+.back-link {
+  @apply text-sm text-muted-foreground hover:text-foreground mt-12 block font-mono;
+}
