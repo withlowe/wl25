@@ -17,8 +17,8 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Notes | My Blog",
-  description: "A collection of notes and photos",
+  title: "withlowe",
+  description: "A collection of notes and postcards",
     generator: 'v0.dev'
 }
 
