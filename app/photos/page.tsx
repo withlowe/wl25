@@ -13,7 +13,7 @@ export default function PhotosPage() {
     if (!fs.existsSync(projectsDirectory)) {
       return (
         <div>
-          <h1>Photos</h1>
+          <h1>Postcards</h1>
           <p>No photos found. Create some in the content/projects directory.</p>
         </div>
       )
@@ -46,7 +46,7 @@ export default function PhotosPage() {
 
     return (
       <div>
-        <h1>Photos</h1>
+        <h1>Postcards</h1>
 
         <div className="post-list">
           {Object.keys(projectsByYear).length === 0 ? (
@@ -76,7 +76,7 @@ export default function PhotosPage() {
     console.error("Error rendering photos page:", error)
     return (
       <div>
-        <h1>Photos</h1>
+        <h1>Postcards</h1>
         <p>An error occurred while loading photos. Please try again later.</p>
       </div>
     )
