@@ -35,13 +35,13 @@ export default function RootLayout({
             <header className="mb-12">
               <nav className="flex space-x-6 text-sm font-mono">
                 <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
-                  about
+                  WITH LOWE
                 </Link>
                 <Link href="/notes" className="text-muted-foreground hover:text-foreground transition-colors">
-                  notes
+                  NOTES
                 </Link>
                 <Link href="/photos" className="text-muted-foreground hover:text-foreground transition-colors">
-                  photos
+                  POSTCARDS
                 </Link>
               </nav>
             </header>
