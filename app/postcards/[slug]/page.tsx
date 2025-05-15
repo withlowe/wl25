@@ -82,8 +82,11 @@ export default function PostcardPage({ params }: { params: { slug: string } }) {
 // Process content to fix image paths and convert to HTML
 function processContent(content: string): string {
   try {
-    // Fix image paths in markdown
-    const fixedContent = content.replace(/!\[(.*?)\]$$((?!http|https|\/|data:image).*?)$$/g, "![$1](/$2)")
+    // Fix image paths in markdown - ensure they use placeholder images
+    const fixedContent = content.replace(
+      /!\[(.*?)\]$$((?!http|https|\/placeholder\.svg).+?)$$/g,
+      "![$1](/placeholder.svg?height=400&width=600&query=$1)",
+    )
 
     // Convert markdown to HTML
     const processedContent = remark()
@@ -93,10 +96,10 @@ function processContent(content: string): string {
     // Further process HTML to ensure image paths are correct
     let htmlContent = processedContent.toString()
 
-    // Fix image src attributes in HTML
+    // Fix image src attributes in HTML - ensure they use placeholder images
     htmlContent = htmlContent.replace(
-      /<img([^>]*)src="((?!http|https|\/|data:image).*?)"([^>]*)>/g,
-      '<img$1src="/$2"$3>',
+      /<img([^>]*)src="((?!http|https|\/placeholder\.svg).+?)"([^>]*)>/g,
+      '<img$1src="/abstract-colorful-swirls.png"$3>',
     )
 
     // Add loading="lazy" and class for styling

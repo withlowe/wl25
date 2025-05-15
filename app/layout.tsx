@@ -18,8 +18,13 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Notes | My Blog",
+  title: "withlowe",
   description: "A collection of notes and postcards",
+  alternates: {
+    types: {
+      "application/rss+xml": [{ url: "/rss.xml", title: "RSS Feed for My Blog" }],
+    },
+  },
     generator: 'v0.dev'
 }
 
@@ -36,13 +41,13 @@ export default function RootLayout({
             <header className="mb-12">
               <nav className="flex space-x-6 text-sm font-mono">
                 <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
-                  now
+                  NOW
                 </Link>
                 <Link href="/notes" className="text-muted-foreground hover:text-foreground transition-colors">
-                  notes
+                  NOTES
                 </Link>
                 <Link href="/postcards" className="text-muted-foreground hover:text-foreground transition-colors">
-                  postcards
+                  POSTCARDS
                 </Link>
               </nav>
             </header>

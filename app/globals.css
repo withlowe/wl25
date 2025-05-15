@@ -220,3 +220,30 @@
 .postcard:hover img {
   @apply shadow-md brightness-95;
 }
+
+/* Subscribe Button Styling */
+.subscribe-container {
+  @apply w-full max-w-sm;
+}
+
+.subscribe-button {
+  @apply flex items-center justify-between font-mono text-sm border border-gray-200 dark:border-gray-800 rounded-md overflow-hidden no-underline w-full transition-all duration-200;
+  background-color: transparent;
+}
+
+.subscribe-button:hover {
+  @apply border-gray-400 dark:border-gray-600;
+  transform: translateY(-1px);
+}
+
+.subscribe-text {
+  @apply py-2 px-4 text-foreground;
+}
+
+.subscribe-icon {
+  @apply p-2 flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-foreground;
+}
+
+.subscribe-button:hover .subscribe-icon {
+  @apply bg-gray-200 dark:bg-gray-700;
+}
