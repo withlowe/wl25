@@ -1,10 +1,10 @@
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
-import { remark } from "remark"
-import html from "remark-html"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import { remark } from "remark"
+import html from "remark-html"
 
 export default function NotePage({ params }: { params: { slug: string } }) {
   const { slug } = params
@@ -36,25 +36,66 @@ export default function NotePage({ params }: { params: { slug: string } }) {
     const fileContents = fs.readFileSync(fullPath, "utf8")
     const { data, content } = matter(fileContents)
 
-    // Process the content synchronously
-    const processedContent = remark().use(html).processSync(content)
-    const contentHtml = processedContent.toString()
-
     // Extract metadata
     const title = data.title || slug
 
+    // Process the content to fix image paths and convert to HTML
+    const processedContent = processContent(content)
+
     return (
-      <article className="prose dark:prose-invert">
-        <h1 className="font-medium">{title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-        <Link href="/notes" className="back-link">
-          ← Back to notes
-        </Link>
+      <article className="max-w-2xl mx-auto">
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-4xl font-serif font-normal">{title}</h1>
+        </div>
+
+        <div
+          className="prose dark:prose-invert prose-lg max-w-none font-serif"
+          dangerouslySetInnerHTML={{ __html: processedContent }}
+        />
+
+        <div className="mt-16">
+          <Link href="/notes" className="back-link">
+            ← Back to notes
+          </Link>
+        </div>
       </article>
     )
   } catch (error) {
     console.error(`Error rendering note page for slug ${slug}:`, error)
     notFound()
+  }
+}
+
+// Process content to fix image paths and convert to HTML
+function processContent(content: string): string {
+  try {
+    // Fix image paths in markdown
+    const fixedContent = content.replace(/!\[(.*?)\]$$((?!http|https|\/|data:image).*?)$$/g, "![$1](/$2)")
+
+    // Convert markdown to HTML
+    const processedContent = remark()
+      .use(html, { sanitize: false }) // Don't sanitize to allow custom HTML
+      .processSync(fixedContent)
+
+    // Further process HTML to ensure image paths are correct
+    let htmlContent = processedContent.toString()
+
+    // Fix image src attributes in HTML
+    htmlContent = htmlContent.replace(
+      /<img([^>]*)src="((?!http|https|\/|data:image).*?)"([^>]*)>/g,
+      '<img$1src="/$2"$3>',
+    )
+
+    // Add loading="lazy" and class for styling
+    htmlContent = htmlContent.replace(
+      /<img([^>]*)>/g,
+      '<img$1 loading="lazy" class="rounded-md max-w-full h-auto my-8">',
+    )
+
+    return htmlContent
+  } catch (error) {
+    console.error("Error processing content:", error)
+    return content
   }
 }
 

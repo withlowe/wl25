@@ -13,6 +13,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)"],
         mono: ["var(--font-mono)"],
+        serif: ["var(--font-serif)"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -59,6 +60,9 @@ const config: Config = {
           css: {
             maxWidth: "none",
             color: "hsl(var(--foreground))",
+            fontFamily: "'Charter', serif",
+            fontSize: "1.125rem",
+            lineHeight: "1.75",
             a: {
               color: "hsl(var(--foreground))",
               textDecoration: "underline",
@@ -69,28 +73,44 @@ const config: Config = {
             },
             h1: {
               color: "hsl(var(--foreground))",
-              fontWeight: 500,
+              fontWeight: 400,
+              fontFamily: "'Charter', serif",
+              letterSpacing: "-0.025em",
             },
             h2: {
               color: "hsl(var(--foreground))",
-              fontWeight: 500,
+              fontWeight: 400,
+              fontFamily: "'Charter', serif",
+              letterSpacing: "-0.025em",
             },
             h3: {
               color: "hsl(var(--foreground))",
-              fontWeight: 500,
+              fontWeight: 400,
+              fontFamily: "'Charter', serif",
+              letterSpacing: "-0.025em",
             },
             h4: {
               color: "hsl(var(--foreground))",
-              fontWeight: 500,
+              fontWeight: 400,
+              fontFamily: "'Charter', serif",
+              letterSpacing: "-0.025em",
+            },
+            p: {
+              marginTop: "1.25em",
+              marginBottom: "1.25em",
             },
             blockquote: {
               color: "hsl(var(--muted-foreground))",
+              borderLeftColor: "hsl(var(--border))",
+              fontStyle: "italic",
+              fontFamily: "'Charter', serif",
             },
             code: {
               color: "hsl(var(--foreground))",
             },
             strong: {
               color: "hsl(var(--foreground))",
+              fontWeight: 700,
             },
           },
         },

@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+import "./charter.css"
 import Link from "next/link"
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -17,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "withlowe",
+  title: "Notes | My Blog",
   description: "A collection of notes and postcards",
     generator: 'v0.dev'
 }
@@ -35,13 +36,13 @@ export default function RootLayout({
             <header className="mb-12">
               <nav className="flex space-x-6 text-sm font-mono">
                 <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
-                  WITH LOWE
+                  now
                 </Link>
                 <Link href="/notes" className="text-muted-foreground hover:text-foreground transition-colors">
-                  NOTES
+                  notes
                 </Link>
-                <Link href="/photos" className="text-muted-foreground hover:text-foreground transition-colors">
-                  POSTCARDS
+                <Link href="/postcards" className="text-muted-foreground hover:text-foreground transition-colors">
+                  postcards
                 </Link>
               </nav>
             </header>

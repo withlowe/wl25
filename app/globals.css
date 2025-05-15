@@ -68,9 +68,9 @@
     @apply text-foreground hover:text-muted-foreground transition-colors;
   }
 
-  /* Remove underlines from navigation links */
+  /* Navigation links styling */
   nav a {
-    @apply no-underline font-mono;
+    @apply no-underline font-mono uppercase tracking-wide;
   }
 
   img {
@@ -120,15 +120,18 @@
 
 /* Ensure the prose content has proper styling */
 .prose {
-  @apply max-w-none;
+  @apply max-w-none text-gray-900 dark:text-gray-100;
+  font-family: "Charter", serif;
 }
 
 .prose p {
-  @apply mb-6;
+  @apply mb-6 leading-relaxed text-base md:text-lg;
+  font-family: "Charter", serif;
+  letter-spacing: -0.011em;
 }
 
 .prose img {
-  @apply my-8;
+  @apply my-8 rounded-sm max-w-full h-auto;
 }
 
 /* Dark mode adjustments for images */
@@ -139,4 +142,81 @@
 /* Back link styling */
 .back-link {
   @apply text-sm text-muted-foreground hover:text-foreground mt-12 block font-mono;
+}
+
+/* Blog post styling */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply font-normal text-gray-900 dark:text-gray-100 mt-12 mb-6;
+  font-family: "Charter", serif;
+  letter-spacing: -0.014em;
+}
+
+.prose h1 {
+  @apply text-3xl md:text-4xl;
+}
+
+.prose h2 {
+  @apply text-2xl md:text-3xl;
+}
+
+.prose h3 {
+  @apply text-xl md:text-2xl;
+}
+
+.prose a {
+  @apply text-gray-900 dark:text-gray-100 underline underline-offset-4 hover:text-gray-600 dark:hover:text-gray-300 transition-colors;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-300 dark:border-gray-700 pl-4 italic my-8;
+}
+
+.prose ul,
+.prose ol {
+  @apply my-6 pl-6;
+  font-size: 1.125rem; /* Slightly larger list text */
+}
+
+.prose li {
+  @apply mb-2;
+  font-size: 1.125rem; /* Slightly larger list text */
+}
+
+.prose hr {
+  @apply my-12 border-gray-200 dark:border-gray-800;
+}
+
+.prose pre {
+  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-x-auto my-6;
+}
+
+.prose code {
+  @apply font-mono text-sm bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Author styling */
+.author-bio {
+  @apply text-gray-600 dark:text-gray-400 italic mb-8;
+}
+
+/* Postcard styling */
+.postcard {
+  @apply mb-8;
+}
+
+.postcard img {
+  @apply rounded-md shadow-sm transition-all duration-300;
+}
+
+.postcard:hover img {
+  @apply shadow-md brightness-95;
 }
