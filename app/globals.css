@@ -125,7 +125,7 @@
 }
 
 .prose p {
-  @apply mb-6 leading-relaxed text-base md:text-lg;
+  @apply mb-6 leading-relaxed text-lg md:text-xl;
   font-family: "Charter", serif;
   letter-spacing: -0.011em;
 }
@@ -246,4 +246,47 @@
 
 .subscribe-button:hover .subscribe-icon {
   @apply bg-gray-200 dark:bg-gray-700;
+}
+
+/* Field Magazine inspired postcard layout */
+.field-article {
+  @apply max-w-3xl mx-auto;
+}
+
+.field-article-header {
+  @apply mb-6;
+}
+
+.field-article-title {
+  @apply text-3xl md:text-4xl font-normal mb-2;
+  font-family: "Charter", serif;
+}
+
+.field-article-meta {
+  @apply text-sm text-muted-foreground font-mono mb-4;
+}
+
+.field-article-hero {
+  @apply w-full relative overflow-hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.field-article-hero img {
+  @apply w-full h-full object-cover rounded-md;
+}
+
+.field-article-content {
+  @apply font-sans text-base md:text-lg leading-relaxed;
+}
+
+.field-article-content p {
+  @apply mb-6;
+}
+
+.field-article-content img {
+  @apply my-8 w-full rounded-md;
+}
+
+.field-article-footer {
+  @apply mt-12;
 }

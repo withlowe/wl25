@@ -55,22 +55,29 @@ export default function PostcardPage({ params }: { params: { slug: string } }) {
     const processedContent = processContent(content)
 
     return (
-      <article className="max-w-2xl mx-auto">
-        <h1 className="text-2xl font-normal mb-2">{title}</h1>
-        {date && <p className="text-sm text-muted-foreground font-mono mb-8">{date}</p>}
-
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md mb-6">
-          <img src={image || "/placeholder.svg"} alt={title} className="w-full h-auto object-cover rounded-md" />
+      <article className="field-article">
+        <div className="field-article-hero mb-1">
+          <img src={image || "/placeholder.svg"} alt={title} loading="lazy" />
         </div>
 
-        <div className="font-mono text-sm mb-12">
-          {description && <p className="mb-6">{description}</p>}
+        <header className="field-article-header mb-8">
+          <div className="font-mono text-sm flex justify-between items-center">
+            <span className="text-muted-foreground">{date}</span>
+            <span>{title}</span>
+          </div>
+        </header>
+
+        {description && <div className="mb-8 text-base md:text-lg font-serif italic">{description}</div>}
+
+        <div className="field-article-content">
           <div dangerouslySetInnerHTML={{ __html: processedContent }} />
         </div>
 
-        <Link href="/postcards" className="back-link">
-          ← Back to postcards
-        </Link>
+        <footer className="field-article-footer">
+          <Link href="/postcards" className="back-link">
+            ← Back to postcards
+          </Link>
+        </footer>
       </article>
     )
   } catch (error) {
